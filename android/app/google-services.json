@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "647887302854",
+    "project_id": "finanzas-d7be1",
+    "storage_bucket": "finanzas-d7be1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647887302854:android:424dae7183ec67389c27c7",
+        "android_client_info": {
+          "package_name": "mx.edu.utez"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_sAvj5Us_QCCFyVHBzeVhUO0D-971hB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
