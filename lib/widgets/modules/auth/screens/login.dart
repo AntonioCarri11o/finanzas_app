@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -58,7 +59,7 @@ class _LoginState extends State<Login> {
                       label: Text('Correo electrónico')),
                 ),
                 const SizedBox(
-                  height: 32,
+                  height: 16,
                 ),
                 TextFormField(
                   controller: _passwordController,
@@ -82,7 +83,23 @@ class _LoginState extends State<Login> {
                   height: 32,
                 ),
                 ElevatedButton(
-                    onPressed: () => {_formKey.currentState!.validate()},
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        try {
+                          final credential = await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: _emailController.text,
+                                  password: _passwordController.text);
+                          print('Credential: $credential');
+                        } on FirebaseAuthException catch (e) {
+                          if (e.code == 'user-not-found') {
+                            print('No user found for that email.');
+                          } else if (e.code == 'wrong-password') {
+                            print('Wrong password provided for that user.');
+                          }
+                        }
+                      }
+                    },
                     style: FilledButton.styleFrom(
                       backgroundColor: Colors.grey[850],
                       foregroundColor: Colors.white,
@@ -91,16 +108,35 @@ class _LoginState extends State<Login> {
                     ),
                     child: const Text('Iniciar sesion')),
                 const SizedBox(
-                  height: 16,
+                  height: 32,
                 ),
-                InkWell(
-                  child: const Text(
-                    'Recuperar contraseña',
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  onTap: () => Navigator.pushNamed(context, '/recuperar'),
+                const Row(
+                  children: [
+                    Text('¿No tienes cuenta?'),
+                  ],
+                ),
+                Row(
+                  children: [
+                    InkWell(
+                      child: const Text(
+                        'Recuperar contraseña',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      onTap: () => Navigator.pushNamed(context, '/recuperar'),
+                    ),
+                    const Spacer(),
+                    InkWell(
+                      child: const Text(
+                        'Registrarse',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      onTap: () => Navigator.pushNamed(context, '/register'),
+                    )
+                  ],
                 )
               ],
             ),

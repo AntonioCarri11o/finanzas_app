@@ -17,29 +17,17 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -59,4 +47,41 @@ class DefaultFirebaseOptions {
     projectId: 'finanzas-d7be1',
     storageBucket: 'finanzas-d7be1.appspot.com',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDsri5e3XMhYdsy_ezLAdHAHyXw8ZeN_6s',
+    appId: '1:647887302854:web:e94df4ca040402b99c27c7',
+    messagingSenderId: '647887302854',
+    projectId: 'finanzas-d7be1',
+    authDomain: 'finanzas-d7be1.firebaseapp.com',
+    storageBucket: 'finanzas-d7be1.appspot.com',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCwQiiNVu123Zc0VoDDwVx17nfNj6teKkM',
+    appId: '1:647887302854:ios:468bffe4b6766c9b9c27c7',
+    messagingSenderId: '647887302854',
+    projectId: 'finanzas-d7be1',
+    storageBucket: 'finanzas-d7be1.appspot.com',
+    iosBundleId: 'com.example.finanzas',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCwQiiNVu123Zc0VoDDwVx17nfNj6teKkM',
+    appId: '1:647887302854:ios:468bffe4b6766c9b9c27c7',
+    messagingSenderId: '647887302854',
+    projectId: 'finanzas-d7be1',
+    storageBucket: 'finanzas-d7be1.appspot.com',
+    iosBundleId: 'com.example.finanzas',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDsri5e3XMhYdsy_ezLAdHAHyXw8ZeN_6s',
+    appId: '1:647887302854:web:54a5b0c30f88ced59c27c7',
+    messagingSenderId: '647887302854',
+    projectId: 'finanzas-d7be1',
+    authDomain: 'finanzas-d7be1.firebaseapp.com',
+    storageBucket: 'finanzas-d7be1.appspot.com',
+  );
+
 }
